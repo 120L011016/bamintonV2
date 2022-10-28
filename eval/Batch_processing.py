@@ -2,9 +2,9 @@ import eval_all
 import os
 import re
 import area
-from Coordinate import edge_detection
 from Coordinate import Draw
-import cv2
+
+
 def sort_key(s):
     # 排序关键字匹配
     # 匹配开头数字序号

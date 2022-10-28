@@ -8,10 +8,10 @@ from PIL import Image
 #轮廓值为255，非轮廓值为0
 def detection(img_path):
 
-    # #生成宽1080，长1920的白色背景
-    # bg = np.zeros((1080, 1920), np.uint8)
-    # # 白色背景
-    # bg.fill(255)
+    #生成宽1080，长1920的白色背景
+    bg = np.zeros((1080, 1920), np.uint8)
+    # 白色背景
+    bg.fill(255)
 
     np.set_printoptions(threshold=np.inf)
     # 导入图像
@@ -34,16 +34,16 @@ def detection(img_path):
     canny = cv2.Canny(lenna, 0, 255)
 
 
-    # # 轮廓提取
-    # contours, _ = cv2.findContours(canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # 根据二值图找轮廓
-    # # 将轮廓绘制在背景上
-    # cv2.drawContours(bg, contours, 0, (0, 0, 255), 3)  # 把轮廓画在原图上（0,0,255） 表示 RGB 三通道，红色
-    # # 图像二值化
-    # bg = cv2.cvtColor(bg, cv2.COLOR_BGR2RGB)
-    # # 图像灰度化
-    # gray = cv2.cvtColor(bg, cv2.COLOR_RGB2GRAY)
+    # 轮廓提取
+    contours, _ = cv2.findContours(canny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # 根据二值图找轮廓
+    # 将轮廓绘制在背景上
+    cv2.drawContours(bg, contours, 0, (0, 0, 255), 3)  # 把轮廓画在原图上（0,0,255） 表示 RGB 三通道，红色
+    # 图像二值化
+    bg = cv2.cvtColor(bg, cv2.COLOR_BGR2RGB)
+    # 图像灰度化
+    gray = cv2.cvtColor(bg, cv2.COLOR_RGB2GRAY)
 
-    return canny
+    return gray
 
 
 #失败，不太可取

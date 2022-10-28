@@ -1,9 +1,9 @@
 import math
 from PIL import Image
-import cv2
-import numpy as np
 from Coordinate import right_x
-from Coordinate import edge_detection
+from CoordinateV2 import edge_detection
+
+
 def rotate(img_path):
 
     gray = edge_detection.detection(img_path)
@@ -27,6 +27,6 @@ def rotate(img_path):
 #TEST  --------------------------
 m = math.atan(0.48)
 k = math.degrees(m)
-img_path = "../Img/baminton.jpg"
+img_path = "../Img/baminton_1.jpg"
 rotate(img_path)
 print("ok")

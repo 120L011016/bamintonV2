@@ -1,9 +1,8 @@
 import numpy as np
 
-from Coordinate import Top_coordinate
 from Coordinate import TopV2
 from Coordinate import A_B_C_D
-from Coordinate import edge_detection
+from CoordinateV2 import edge_detection
 import cv2
 
 
@@ -82,44 +81,26 @@ def Draw_stand_imitate(img_path):
     cv2.waitKey(0)
 def  max_domin(img_path):
     mask_sel = edge_detection.detection(img_path)
+    # find all cohntours
     contours, hierarchy = cv2.findContours(mask_sel, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
-    #生成宽1080，长1920的白色背景
-    bg = np.zeros((1080, 1920), np.uint8)
-    # 白色背景
-    bg.fill(255)
-    # 显示图像
-    cv2.imshow(img_path, mask_sel)
 
-    # 等待显示
-    cv2.waitKey(0)
-    # 找到最大区域并填充
-
-    area = []
-
+    max = 0
+    max_are = 0
     for j in range(len(contours)):
-        # 将轮廓绘制在背景上
-        cv2.drawContours(bg, contours[j], 0, (55, 255, 155), 10)  # 把轮廓画在原图上（0,0,255） 表示 RGB 三通道，红色
-        # 显示图像
-        cv2.imshow(img_path, bg)
+        area = cv2.contourArea(contours[j])
+        if(area>max_are):
+            max = j
+            max_are = area
 
-        # 等待显示
-        cv2.waitKey(0)
-        area.append(cv2.contourArea(contours[j]))
 
-    max_idx = np.argmax(area)
-
-    max_area = cv2.contourArea(contours[max_idx])
-
-    for k in range(len(contours)):
-
-        if k != max_idx:
-            cv2.fillPoly(mask_sel, [contours[k]], 0)
-
+    mask = cv2.drawContours(mask_sel, contours[max], 0, 255, cv2.FILLED)
     # 显示图像
-    cv2.imshow(img_path, mask_sel)
+    cv2.imshow(img_path, mask)
 
     # 等待显示
     cv2.waitKey(0)
+
+
 #Test        ----------------------------
 def morphology(img_path):
     mask_sel = edge_detection.detection(img_path)
@@ -138,5 +119,5 @@ def morphology(img_path):
 img_path = "../Batch_ok/16_camC.jpg"
 img_path = "../Img/baminton.jpg"
 # Draw_stand_imitate(img_path)
-# max_domin(img_path)
-morphology(img_path)
+max_domin(img_path)
+# morphology(img_path)

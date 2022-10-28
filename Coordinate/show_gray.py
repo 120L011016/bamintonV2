@@ -1,4 +1,4 @@
-from Coordinate import edge_detection
+from CoordinateV2 import edge_detection
 import re
 import os
 import cv2
@@ -26,7 +26,11 @@ for image in image_list:
     print(img)
     gray = edge_detection.detection(img)
 
+
     cv2.imshow("img",cv2.imread(img))
     cv2.waitKey(0)
     cv2.imshow("demo", gray)
     cv2.waitKey(0)
+
+    # cv2.imshow("demo", Draw.max_domin(img))
+    # cv2.waitKey(0)

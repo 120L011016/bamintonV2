@@ -1,5 +1,6 @@
 from Coordinate import right_x
-from Coordinate import edge_detection
+from CoordinateV2 import edge_detection
+
 
 # A：左下角点坐标   B ： 右下角点坐标   C：左上角点坐标   D：右上角点坐标
 def A_B_C_D(img_path):

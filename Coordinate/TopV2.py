@@ -1,6 +1,7 @@
 from Coordinate import right_x
 
-from Coordinate import edge_detection
+from CoordinateV2 import edge_detection
+
 
 #TopV2 和 Top_Coordinate 都是求 顶点坐标的，不同的是，TopV2比Top_Coordinate要准
 #TopV2 调用了函数求最左边最右边点的函数right_x
