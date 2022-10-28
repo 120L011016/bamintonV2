@@ -1,5 +1,5 @@
 from Coordinate import A_B_C_D
-
+import Coordinate
 from Coordinate import TopV2
 #衡量高度的程序
 def height(standard_path,img_path):

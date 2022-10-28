@@ -1,4 +1,4 @@
-import edge_detection
+from Coordinate import edge_detection
 #计算返回顶点的坐标
 def Top_coordinate(img_path):
     gray = edge_detection.detection(img_path)
@@ -6,6 +6,7 @@ def Top_coordinate(img_path):
     top = 200
     sign = 0
     # 求最高顶点
+    j0 = 0
     for i in range(0, shape[0]):  # shape[0]X轴（从左到右），切片，步长：10
         k = 0
         for j in range(0, shape[1]):
@@ -13,7 +14,7 @@ def Top_coordinate(img_path):
             value = gray[i, j]  # 一幅图的所有像素点
             # print("",value)
             # 获取轮廓
-            if (value < 150):  # 轮廓边的点
+            if (value > 150):  # 轮廓边的点
                 if (sign == 0):
                     top = i
                     j0 = j
