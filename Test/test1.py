@@ -1,7 +1,7 @@
-from CoordinateV2 import edge_detection
+
 import re
 import os
-import cv2
+
 
 import cv2
 import numpy as np
@@ -26,8 +26,8 @@ strsort(image_list)
 for image in image_list:
     img = "../Batch_Img/"+image
 
-    img = cv2.pyrDown(cv2.imread(img, cv2.IMREAD_UNCHANGED))
-    img = cv2.imread(image)
+    # img = cv2.pyrDown(cv2.imread(img, cv2.IMREAD_UNCHANGED))
+    img = cv2.imread(img, cv2.IMREAD_UNCHANGED)
     ret, thresh = cv2.threshold(cv2.cvtColor(img.copy(), cv2.COLOR_BGR2GRAY), 90, 255, cv2.THRESH_BINARY)
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 

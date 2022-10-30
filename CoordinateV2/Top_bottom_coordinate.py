@@ -35,8 +35,8 @@ def Top_bottom_coordinate(img_path):
 
 
 #Test--------------------------------------------
-
-img_path = "../Img/baminton_1.jpg"
-# Draw_stand_imitate(img_path)
-print(Top_bottom_coordinate(img_path))
+#
+# img_path = "../Img/baminton_1.jpg"
+# # Draw_stand_imitate(img_path)
+# print(Top_bottom_coordinate(img_path))
 
